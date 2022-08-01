@@ -36,6 +36,16 @@ services:
       - backend_local_postgres_data_backups:/backups:z
     env_file:
       - ./.envs/.local/.postgres
+    ports:
+      - "5432:5432"
+
+  pqadmin:
+    image: dpage/pqadmin4
+    ports:
+      - "5500:80"
+    enviroments:
+      - PGADMIN_DEFAULT_EMAIL=mg@beaglesystems.com
+      - PGADMIN_DEFAULT_PASSWORD=password=bestbeagleever
 
   docs:
     image: backend_local_docs
